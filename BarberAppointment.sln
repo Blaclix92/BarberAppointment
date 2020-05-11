@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberAppointment.WebApi", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarberAppointment.Identity", "BarberAppointment.Identity\BarberAppointment.Identity.csproj", "{184931E9-07EF-4C8A-BD02-9EE1A73346C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarberAppointment.GraphQLApi", "BarberAppointment.GraphQLApi\BarberAppointment.GraphQLApi.csproj", "{033BA9A9-CD0F-4519-B4B3-8276B9A409CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{184931E9-07EF-4C8A-BD02-9EE1A73346C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{184931E9-07EF-4C8A-BD02-9EE1A73346C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{184931E9-07EF-4C8A-BD02-9EE1A73346C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{033BA9A9-CD0F-4519-B4B3-8276B9A409CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{033BA9A9-CD0F-4519-B4B3-8276B9A409CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{033BA9A9-CD0F-4519-B4B3-8276B9A409CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{033BA9A9-CD0F-4519-B4B3-8276B9A409CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
