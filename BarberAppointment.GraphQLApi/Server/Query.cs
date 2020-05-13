@@ -13,6 +13,7 @@ namespace BarberAppointment.GraphQLApi.Server
     {
         public Dictionary<string, BookAppointment> BookAppointments() => new BookAppointmentRepository().getData();
         public Dictionary<string, WorkDay> WorkDays() => new WorkDayRepository().getData();
+        public Dictionary<string, CustomWorkDay> CustomWorkDay() => new CustomWorkDayRepository().getData();
 
     }
 }
