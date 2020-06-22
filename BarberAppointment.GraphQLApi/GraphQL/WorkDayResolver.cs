@@ -22,5 +22,10 @@ namespace BarberAppointment.GraphQLApi.GraphQL
         {
             return _appointmentHour.GetAll().Where(a => a.WorkDayId == workDay.Id).ToList();
         }
+
+        public int GetAppointmentHoursNumber(WorkDay workDay, IResolverContext ctx)
+        {
+            return _appointmentHour.GetAll().Where(a => a.WorkDayId == workDay.Id).Count();
+        }
     }
 }

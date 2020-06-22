@@ -15,6 +15,7 @@ namespace BarberAppointment.GraphQLApi.GraphQL
             descriptor.Field(a => a.Day).Type<StringType>();
             descriptor.Field(a => a.BarberId).Type<StringType>();
             descriptor.Field<WorkDayResolver>(t => t.GetAppointmentHours(default, default));
+            descriptor.Field<WorkDayResolver>(t => t.GetAppointmentHoursNumber(default, default));
         }
 
     }
