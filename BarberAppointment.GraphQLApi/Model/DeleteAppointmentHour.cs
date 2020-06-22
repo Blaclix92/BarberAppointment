@@ -5,11 +5,8 @@ using System.Threading.Tasks;
 
 namespace BarberAppointment.GraphQLApi.Model
 {
-    public class AppointmentHour
+    public class DeleteAppointmentHour
     {
         public int Id { get; set; }
-        public string Hour { get; set; }
-
-        public int WorkDayId { get; set; }
     }
 }

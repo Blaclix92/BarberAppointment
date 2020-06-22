@@ -24,6 +24,8 @@ namespace BarberAppointment.GraphQLApi
         {
             services.AddSingleton<IBookAppointment, BookAppointmentRepository>();
             services.AddSingleton<IProfile, ProfileRepository>();
+            services.AddSingleton<IWorkDay, WorkDayRepository>();
+            services.AddSingleton<IAppointmentHour, AppointmentHourRepository>();
 
             services.AddGraphQL(s => SchemaBuilder.New()
                 .AddServices(s)

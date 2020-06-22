@@ -10,7 +10,5 @@ namespace BarberAppointment.GraphQLApi.Model
         public int Id { get; set; }
         public string Day { get; set; }
         public int BarberId { get; set; }
-        public int NumberOfAppointmentHours { get { return AppointmentHours.Count; } }
-        public ICollection<AppointmentHour> AppointmentHours { get; set; } = new List<AppointmentHour>();
     }
 }

@@ -14,15 +14,22 @@ namespace BarberAppointment.GraphQLApi.GraphQL
     {
         private readonly IBookAppointment _bookAppointment;
         private readonly IProfile _profile;
-        public Query(IBookAppointment bookAppointment, IProfile profile)
+        private readonly IWorkDay _workDay;
+
+        public Query(IBookAppointment bookAppointment, IProfile profile, IWorkDay workDay)
         {
             _bookAppointment = bookAppointment;
+            _workDay = workDay;
             _profile = profile;
         }
 
         [UsePaging(SchemaType = typeof(BookAppointmentType))]
         [UseFiltering]
         public IQueryable<BookAppointment> BookAppointments=> _bookAppointment.GetAll();
+
+        [UsePaging(SchemaType = typeof(WorkDayType))]
+        [UseFiltering]
+        public IQueryable<WorkDay> WorkDays => _workDay.GetAll();
 
         [UsePaging(SchemaType = typeof(BookAppointmentType))]
         [UseFiltering]
