@@ -7,6 +7,8 @@
   <ItemGroup>
     <PackageReference Include="HotChocolate.AspNetCore" Version="10.4.3" />
     <PackageReference Include="HotChocolate.AspNetCore.Playground" Version="10.4.3" />
+    <PackageReference Include="HotChocolate.Types" Version="10.4.3" />
+    <PackageReference Include="HotChocolate.Types.Filters" Version="10.4.3" />
   </ItemGroup>
 
 </Project>

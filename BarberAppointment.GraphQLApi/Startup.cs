@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BarberAppointment.GraphQLApi.Core;
+using BarberAppointment.GraphQLApi.Data;
+using BarberAppointment.GraphQLApi.GraphQL;
 using BarberAppointment.GraphQLApi.Server;
 using HotChocolate;
 using HotChocolate.AspNetCore;
@@ -19,9 +22,15 @@ namespace BarberAppointment.GraphQLApi
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddGraphQL(
-                SchemaBuilder.New()
-                .AddQueryType<Query>());
+            services.AddSingleton<IBookAppointment, BookAppointmentRepository>();
+            services.AddSingleton<IProfile, ProfileRepository>();
+
+            services.AddGraphQL(s => SchemaBuilder.New()
+                .AddServices(s)
+                .AddType<BookAppointmentType>()
+                .AddQueryType<Query>()
+                .AddMutationType<Mutation>()
+                .Create());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
