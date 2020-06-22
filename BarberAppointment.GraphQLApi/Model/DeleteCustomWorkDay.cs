@@ -5,11 +5,8 @@ using System.Threading.Tasks;
 
 namespace BarberAppointment.GraphQLApi.Model
 {
-    public class CustomWorkDay
+    public class DeleteCustomWorkDay
     {
         public int Id { get; set; }
-        public string Date { get; set; }
-        public int OffDay { get; set; }
-        public int BarberId { get; set; }
     }
 }

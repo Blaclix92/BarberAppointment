@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 
 namespace BarberAppointment.GraphQLApi.Model
 {
-    public class CustomAppointmentHour
+    public class CreateCustomAppointmentHour
     {
-        public int Id { get; set; }
         public int Visible { get; set; }
         public string Hour { get; set; }
-        public int CustomWorkDayId { get; set; }
     }
 }

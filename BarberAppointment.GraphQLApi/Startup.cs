@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using BarberAppointment.GraphQLApi.Core;
 using BarberAppointment.GraphQLApi.Data;
 using BarberAppointment.GraphQLApi.GraphQL;
-using BarberAppointment.GraphQLApi.Server;
 using HotChocolate;
 using HotChocolate.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -26,10 +25,17 @@ namespace BarberAppointment.GraphQLApi
             services.AddSingleton<IProfile, ProfileRepository>();
             services.AddSingleton<IWorkDay, WorkDayRepository>();
             services.AddSingleton<IAppointmentHour, AppointmentHourRepository>();
+            services.AddSingleton<ICustomWorkDay, CustomWorkDayRepository>();
+            services.AddSingleton<ICustomAppointmentHour, CustomAppointmentHourRepository>();
 
             services.AddGraphQL(s => SchemaBuilder.New()
                 .AddServices(s)
                 .AddType<BookAppointmentType>()
+                .AddType<CustomWorkDayType>()
+                .AddType<WorkDayType>()
+                .AddType<ProfileType>()
+                .AddType<AppointmentHourType>()
+                .AddType<CustomAppointmentHourType>()
                 .AddQueryType<Query>()
                 .AddMutationType<Mutation>()
                 .Create());

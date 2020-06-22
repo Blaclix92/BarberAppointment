@@ -1,4 +1,5 @@
-﻿using BarberAppointment.GraphQLApi.Model;
+﻿using BarberAppointment.GraphQLApi.Core;
+using BarberAppointment.GraphQLApi.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,58 +7,56 @@ using System.Threading.Tasks;
 
 namespace BarberAppointment.GraphQLApi.Data
 {
-    public class CustomWorkDayRepository
+    public class CustomWorkDayRepository : ICustomWorkDay
     {
-        private Dictionary<string, CustomWorkDay> _customWorkDay;
+        private IList<CustomWorkDay> _customWorkDays;
 
         public CustomWorkDayRepository()
         {
-            _customWorkDay = CreateWorkDays().ToDictionary(t => t.Id.ToString());
+            _customWorkDays = CreateWorkDays();
         }
 
-        public Dictionary<string, CustomWorkDay> getData()
+        public CustomWorkDay CreateWorkDay(CreateCustomWorkDay createWorkDay)
         {
-            return _customWorkDay;
+            throw new NotImplementedException();
         }
 
-        private static IEnumerable<CustomWorkDay> CreateWorkDays()
+        public CustomWorkDay DeleteWorkDay(DeleteCustomWorkDay deleteWorkDay)
         {
-            yield return new CustomWorkDay
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<CustomWorkDay> GetAll()
+        {
+            return _customWorkDays.AsQueryable();
+        }
+
+        private IList<CustomWorkDay> CreateWorkDays()
+        {
+            return new List<CustomWorkDay>() 
             {
-                Id = 1,
-                Date = "12-02-2019",
+                new CustomWorkDay
+                {
+                        Id = 1,
+                        Date = "12-02-2019",
+                        OffDay = 0,
+                        BarberId = 2,
+                },
+             new CustomWorkDay
+            {
+                Id = 2,
+                Date = "25-02-2019",
                 OffDay = 0,
                 BarberId = 2,
-                CustomAppointmentHour = new List<CustomAppointmentHour>() {
-                        new CustomAppointmentHour(){ Id= 1, Visible=1, Hour="11:00 AM"},
-                        new CustomAppointmentHour(){ Id= 2, Visible=1, Hour="12:00 PM"},
-                        new CustomAppointmentHour(){ Id= 3, Visible=1, Hour="01:00 PM"}
-                }
-            };
-             yield return new CustomWorkDay
-                {
-                    Id = 2,
-                    Date = "25-02-2019",
-                    OffDay = 0,
-                    BarberId = 2,
-                    CustomAppointmentHour = new List<CustomAppointmentHour>() {
-                        new CustomAppointmentHour(){ Id= 1, Visible=1, Hour="11:00 AM"},
-                        new CustomAppointmentHour(){ Id= 2, Visible=1, Hour="12:00 PM"},
-                        new CustomAppointmentHour(){ Id= 3, Visible=1, Hour="01:00 PM"}
-                }
-                };
-               yield return new CustomWorkDay
-                {
-                    Id = 3,
-                    Date = "25-03-2019",
-                    OffDay = 0,
-                    BarberId = 2,
-                    CustomAppointmentHour = new List<CustomAppointmentHour>() {
-                        new CustomAppointmentHour(){ Id= 1, Visible=1, Hour="11:00 AM"},
-                        new CustomAppointmentHour(){ Id= 2, Visible=1, Hour="12:00 PM"},
-                        new CustomAppointmentHour(){ Id= 3, Visible=1, Hour="01:00 PM"}
-                }
-                };
+            },
+           new CustomWorkDay
+            {
+                Id = 3,
+                Date = "25-03-2019",
+                OffDay = 0,
+                BarberId = 2
+            }
+        };
         }
     }
 }
