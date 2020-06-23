@@ -16,12 +16,12 @@ namespace BarberAppointment.GraphQLApi.Data
             _customWorkDays = CreateWorkDays();
         }
 
-        public CustomWorkDay CreateWorkDay(CreateCustomWorkDay createWorkDay)
+        public CustomWorkDay Create(CreateCustomWorkDay createCustomWorkDay)
         {
             throw new NotImplementedException();
         }
 
-        public CustomWorkDay DeleteWorkDay(DeleteCustomWorkDay deleteWorkDay)
+        public CustomWorkDay Delete(DeleteCustomWorkDay deleteCustomWorkDay)
         {
             throw new NotImplementedException();
         }
@@ -37,26 +37,26 @@ namespace BarberAppointment.GraphQLApi.Data
             {
                 new CustomWorkDay
                 {
-                        Id = 1,
-                        Date = "12-02-2019",
-                        OffDay = 0,
-                        BarberId = 2,
+                    Id = 1,
+                    Date = "12-02-2019",
+                    OffDay = 0,
+                    BarberId = 2,
                 },
-             new CustomWorkDay
-            {
-                Id = 2,
-                Date = "25-02-2019",
-                OffDay = 0,
-                BarberId = 2,
-            },
-           new CustomWorkDay
-            {
-                Id = 3,
-                Date = "25-03-2019",
-                OffDay = 0,
-                BarberId = 2
-            }
-        };
+                new CustomWorkDay
+                {
+                    Id = 2,
+                    Date = "25-02-2019",
+                    OffDay = 0,
+                    BarberId = 2,
+                },
+               new CustomWorkDay
+                {
+                    Id = 3,
+                    Date = "25-03-2019",
+                    OffDay = 0,
+                    BarberId = 2
+                }
+            };
         }
     }
 }
