@@ -9,5 +9,7 @@ namespace BarberAppointment.GraphQLApi.Model
     {
         public int Visible { get; set; }
         public string Hour { get; set; }
+
+        public int CustomWorkDayId { get; set; }
     }
 }

@@ -18,7 +18,16 @@ namespace BarberAppointment.GraphQLApi.Data
 
         public CustomAppointmentHour Create(CreateCustomAppointmentHour createCustomAppointmentHour)
         {
-            throw new NotImplementedException();
+            CustomAppointmentHour newCustomAppointmentHour = new CustomAppointmentHour()
+            {
+                Id = 99,
+                Hour = createCustomAppointmentHour.Hour,
+                CustomWorkDayId = createCustomAppointmentHour.CustomWorkDayId,
+                Visible = 1
+            };
+
+            _customAppointmentHours.Add(newCustomAppointmentHour);
+            return newCustomAppointmentHour;
         }
 
         public IList<CustomAppointmentHour> CreateAppointmentHours()
@@ -39,7 +48,10 @@ namespace BarberAppointment.GraphQLApi.Data
 
         public CustomAppointmentHour Delete(DeleteCustomAppointmentHour deleteCustomAppointmentHour)
         {
-            throw new NotImplementedException();
+            CustomAppointmentHour customAppointmentHourToDelete = _customAppointmentHours.FirstOrDefault(w => w.Id == deleteCustomAppointmentHour.Id);
+            _customAppointmentHours.Remove(customAppointmentHourToDelete);
+
+            return customAppointmentHourToDelete;
         }
 
         public IQueryable<CustomAppointmentHour> GetAll()

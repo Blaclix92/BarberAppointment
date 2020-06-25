@@ -18,12 +18,25 @@ namespace BarberAppointment.GraphQLApi.Data
 
         public CustomWorkDay Create(CreateCustomWorkDay createCustomWorkDay)
         {
-            throw new NotImplementedException();
+            CustomWorkDay newCustomWorkDay = new CustomWorkDay()
+            {
+                Id = 99,
+                BarberId = createCustomWorkDay.BarberId,
+                Date = createCustomWorkDay.Date,
+                OffDay = 0
+            };
+
+            _customWorkDays.Add(newCustomWorkDay);
+
+            return newCustomWorkDay;
         }
 
         public CustomWorkDay Delete(DeleteCustomWorkDay deleteCustomWorkDay)
         {
-            throw new NotImplementedException();
+            CustomWorkDay customWorkDayToDelete = _customWorkDays.FirstOrDefault(w => w.Id == deleteCustomWorkDay.Id);
+            _customWorkDays.Remove(customWorkDayToDelete);
+
+            return customWorkDayToDelete;
         }
 
         public IQueryable<CustomWorkDay> GetAll()
