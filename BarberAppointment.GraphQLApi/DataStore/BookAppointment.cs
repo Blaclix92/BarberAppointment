@@ -1,5 +1,8 @@
-﻿namespace BarberAppointment.GraphQLApi.DataStore
+﻿using HotChocolate.AspNetCore.Authorization;
+
+namespace BarberAppointment.GraphQLApi.DataStore
 {
+    [Authorize]
     public class BookAppointment
     {
 

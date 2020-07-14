@@ -1,4 +1,5 @@
 ﻿using BarberAppointment.GraphQLApi.Model;
+using HotChocolate.AspNetCore.Authorization;
 using HotChocolate.Types;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,10 @@ namespace BarberAppointment.GraphQLApi.GraphQL
         protected override void Configure(IObjectTypeDescriptor<AppointmentHour> descriptor)
         {
             descriptor.Field(a => a.Id).Type<IdType>();
+            descriptor.Field(a => a.Custom).Type<StringType>();
             descriptor.Field(a => a.WorkDayId).Type<StringType>();
             descriptor.Field(a => a.Hour).Type<StringType>();
+            descriptor.Field(a => a.Visible).Type<StringType>();
         }
     }
 }

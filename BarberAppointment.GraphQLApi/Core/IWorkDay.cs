@@ -11,5 +11,6 @@ namespace BarberAppointment.GraphQLApi.Core
         IQueryable<WorkDay> GetAll();
         WorkDay CreateWorkDay(CreateWorkDay createWorkDay);
         WorkDay DeleteWorkDay(DeleteWorkDay deleteWorkDay);
+        WorkDay CreateCustomWorkDay(CreateCustomWorkDay createCustomWorkDay);
     }
 }

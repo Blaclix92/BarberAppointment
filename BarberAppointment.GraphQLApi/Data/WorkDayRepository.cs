@@ -24,21 +24,56 @@ namespace BarberAppointment.GraphQLApi.Data
                       Id = 1,
                       Day = "Monday",
                       BarberId = 2,
+                      Custom = 0,
+                      Date = null,
+                      OffDay = 0
                   },
                 new WorkDay
                 {
                     Id = 2,
                     BarberId = 2,
                     Day = "Tuesday",
+                    Custom = 0,
+                    Date = null,
+                    OffDay = 0
                 },
                 new WorkDay
                 {
                     Id = 3,
                     BarberId = 2,
                     Day = "Wednesday",
+                    Custom = 0,
+                    Date = null,
+                    OffDay = 0
+                },
+                    new WorkDay()
+                {
+                    Id = 4,
+                    BarberId = 2,
+                    Day = null,
+                    Custom = 1,
+                    Date = "30-04-2019",
+                    OffDay = 0
                 }
             };
       
+        }
+
+        public WorkDay CreateCustomWorkDay(CreateCustomWorkDay createCustomWorkDay)
+        {
+            WorkDay newWorkDay = new WorkDay()
+            {
+                Id = 99,
+                BarberId = createCustomWorkDay.BarberId,
+                Day = null,
+                Custom = 1,
+                Date = createCustomWorkDay.Date,
+                OffDay = createCustomWorkDay.OffDay
+            };
+
+            _workDays.Add(newWorkDay);
+
+            return newWorkDay;
         }
 
         public WorkDay CreateWorkDay( CreateWorkDay createWorkDay)

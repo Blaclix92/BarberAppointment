@@ -7,6 +7,7 @@ using BarberAppointment.GraphQLApi.Data;
 using BarberAppointment.GraphQLApi.GraphQL;
 using HotChocolate;
 using HotChocolate.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -17,31 +18,36 @@ namespace BarberAppointment.GraphQLApi
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddSingleton<IBookAppointment, BookAppointmentRepository>();
             services.AddSingleton<IProfile, ProfileRepository>();
             services.AddSingleton<IWorkDay, WorkDayRepository>();
             services.AddSingleton<IAppointmentHour, AppointmentHourRepository>();
-            services.AddSingleton<ICustomWorkDay, CustomWorkDayRepository>();
-            services.AddSingleton<ICustomAppointmentHour, CustomAppointmentHourRepository>();
 
             services.AddGraphQL(s => SchemaBuilder.New()
                 .AddServices(s)
+                .AddAuthorizeDirectiveType()
                 .AddType<BookAppointmentType>()
-                .AddType<CustomWorkDayType>()
                 .AddType<WorkDayType>()
                 .AddType<ProfileType>()
                 .AddType<AppointmentHourType>()
-                .AddType<CustomAppointmentHourType>()
                 .AddQueryType<Query>()
                 .AddMutationType<Mutation>()
                 .Create());
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                   .AddIdentityServerAuthentication(options =>
+                   {
+
+                       // base-address of your identityserver
+                       options.Authority = "http://localhost:51351";
+                       options.RequireHttpsMetadata = false;
+                       options.ApiName = "DemoApi";
+                       options.ApiSecret = "MySecret";
+                   });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -49,9 +55,10 @@ namespace BarberAppointment.GraphQLApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseGraphQL();
+            app.UseAuthentication();
+            app.UseGraphQL("/api");
             app.UsePlayground();
-
+        
         }
     }
 }

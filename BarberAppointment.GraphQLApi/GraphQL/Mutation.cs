@@ -12,13 +12,11 @@ namespace BarberAppointment.GraphQLApi.GraphQL
     {
         private readonly IBookAppointment _bookAppointmentService;
         private readonly IWorkDay _workDayService;
-        private readonly ICustomWorkDay _customWorkDayService;
 
-        public Mutation(IBookAppointment bookAppointmentService, IWorkDay workDayService, ICustomWorkDay customWorkDayService)
+        public Mutation(IBookAppointment bookAppointmentService, IWorkDay workDayService)
         {
             _bookAppointmentService = bookAppointmentService;
             _workDayService = workDayService;
-            _customWorkDayService = customWorkDayService;
         }
 
         public BookAppointment CreateBook(CreateBookAppointment bookAppointment)
@@ -40,14 +38,5 @@ namespace BarberAppointment.GraphQLApi.GraphQL
         {
             return _workDayService.DeleteWorkDay(deleteWorkDay);
         } 
-        public CustomWorkDay CreateCustomWorkDay(CreateCustomWorkDay createCustomWorkDay)
-        {
-            return _customWorkDayService.Create(createCustomWorkDay);
-        }
-
-        public CustomWorkDay DeleteCustomWorkDay(DeleteCustomWorkDay deleteCustomWorkDay)
-        {
-            return _customWorkDayService.Delete(deleteCustomWorkDay);
-        }
     }
 }

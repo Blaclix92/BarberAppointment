@@ -1,13 +1,16 @@
 ﻿using BarberAppointment.GraphQLApi.Core;
 using BarberAppointment.GraphQLApi.DataStore;
 using BarberAppointment.GraphQLApi.Model;
+using HotChocolate.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace BarberAppointment.GraphQLApi.Data
 {
+    [Authorize]
     public class BookAppointmentRepository : IBookAppointment
     {
         private IList<BookAppointment> _bookappointments;
@@ -48,6 +51,15 @@ namespace BarberAppointment.GraphQLApi.Data
                     Cancel = 0,
                     BarberId = 2,
                     ClientId = 3
+                },
+                 new BookAppointment()
+                {
+                    Id = 4,
+                    Date = "30-04-2019",
+                    Hour = "11:00 AM",
+                    Cancel = 0,
+                    BarberId = 3,
+                    ClientId = 3
                 }
             };
 
@@ -77,9 +89,10 @@ namespace BarberAppointment.GraphQLApi.Data
             _bookappointments.Remove(bookAppointmentToDelete);
             return bookAppointmentToDelete;
         }
-
+        [Authorize]
         public IQueryable<BookAppointment> GetAll()
         {
+           
             return _bookappointments.AsQueryable(); ;
         }
     }

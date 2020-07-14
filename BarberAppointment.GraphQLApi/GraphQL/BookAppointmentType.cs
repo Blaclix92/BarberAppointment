@@ -1,4 +1,5 @@
 ﻿using BarberAppointment.GraphQLApi.DataStore;
+using HotChocolate.AspNetCore.Authorization;
 using HotChocolate.Types;
 using System;
 using System.Collections.Generic;
